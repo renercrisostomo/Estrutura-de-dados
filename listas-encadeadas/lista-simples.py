@@ -158,15 +158,16 @@ class LinkedList(object):
     if self.length == 0:
       self.insertAtBeginning(data)
     current = self.head
-    i = 0
-    while ( (current != None) and (current.data < data) ):
+    count = 0
+    previousNode = None
+    while ( (current != None) and (current.data <= data) ):
+      previousNode = current
       current = current.next
-      i += 1
-
-      
+      count += 1
+    else: 
+      self.insertAtGivenPosition(count, data)
 
 lista = LinkedList()
-lista.insertAtEnd(0)
 lista.insertAtEnd(1)
 lista.insertAtEnd(2)
 lista.insertAtEnd(3)
@@ -177,3 +178,5 @@ lista.insertAtEnd(6)
 lista.print()
 lista.getNodeAtPositionFromTail(70)
 lista.printReverse(lista.head)
+lista.insertInOrder(6)
+lista.print()
