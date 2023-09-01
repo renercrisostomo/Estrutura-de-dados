@@ -166,6 +166,26 @@ class LinkedList(object):
       count += 1
     else: 
       self.insertAtGivenPosition(count, data)
+  
+  def moveToHead(self, data):
+    
+    currentNode = self.head
+    previousNode = self.head
+
+    if self.length:
+      while currentNode.next!=None:
+        previousNode=currentNode
+        currentNode=currentNode.next
+        if currentNode.data == data: # corrigir e testar
+          previousNode.next=currentNode.next
+
+          return
+  
+  # def temCiclo(self): fazer e testar
+  # def invert(self): fazer e testar
+
+
+          
 
 lista = LinkedList()
 lista.insertAtEnd(1)
