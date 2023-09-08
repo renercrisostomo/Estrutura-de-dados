@@ -184,6 +184,23 @@ class LinkedList(object):
   # def temCiclo(self): fazer e testar
   # def invert(self): fazer e testar
 
+  # faltei a aula
+
+  def invertDoisADois(self):
+
+    curr = self.head
+    while curr != None and curr.next != None:
+      aux = curr.data
+      curr.data = curr.next.data
+      curr.next.data = aux
+      curr = curr.next.next
+
+  # def removeDuplicado(self):
+
+  # def isPalindromo(self):
+
+
+
 
           
 
@@ -196,7 +213,9 @@ lista.insertAtEnd(5)
 lista.insertAtEnd(6)
 
 lista.print()
-lista.getNodeAtPositionFromTail(70)
-lista.printReverse(lista.head)
-lista.insertInOrder(6)
+# lista.getNodeAtPositionFromTail(70)
+# lista.printReverse(lista.head)
+# lista.insertInOrder(6)
+# lista.invertDoisADois()
+lista.removeDuplicado()
 lista.print()
