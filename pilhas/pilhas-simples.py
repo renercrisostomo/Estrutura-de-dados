@@ -9,7 +9,7 @@ class Stack():
     self.length = 0
     self.head = None
   
-  def add(self, data):
+  def push(self, data):
     count = 0
     dataLength = (len(data) if type(data) == list else 1)
       
@@ -39,10 +39,44 @@ class Stack():
         if pos == self.length : return
         current = current.next
 
-pilha = Stack()
+# def ExpresaoParaPosfixa():
 
-pilha.add([3,4,5])
+def calcular(c, op1, op2):
+  if c == '+': return op1 + op2
+  elif c == '-': return op1 - op2
+  elif c == '*': return op1 * op2
+  elif c == '/': return op1 / op2
 
-pilha.print()
-pilha.pop()
-pilha.print()
+def resultadoExpressaoPosfixa(posfixa):
+  pilha = Stack()
+  for c in posfixa:
+    if c in '+-*/':
+      op1 = pilha.pop()
+      op2 = pilha.pop()
+      pilha.push(calcular(c, op1, op2))
+    else:
+      pilha.push(int(c))
+
+def transform(c, op1, op2):
+  return ['(', op1, c, op2, ')']
+
+def posfixaParaInfixa(posfixa):
+  pilha = Stack()
+  for c in posfixa:
+    if c in '+-*/':
+      op1 = pilha.pop()
+      op2 = pilha.pop()
+      pilha.push(transform(c, op1, op2))
+    else:
+      pilha.push(c)
+
+posfixa = '59+'
+print(resultadoExpressaoPosfixa(posfixa))
+print(posfixaParaInfixa(posfixa))
+
+# pilha = Stack()
+# pilha.push([3,4,5])
+
+# pilha.print()
+# pilha.pop()
+# pilha.print()
